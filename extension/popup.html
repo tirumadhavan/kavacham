@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- CRITICAL: Fixes emoji character encoding -->
+  <meta charset="UTF-8">
+  <title>Kavacham Shield</title>
+  <style>
+    body { width: 320px; font-family: Arial, sans-serif; padding: 15px; background: #0f172a; color: white; margin: 0; }
+    .card { background: #1e293b; padding: 12px; border-radius: 8px; margin-top: 10px; border: 1px solid #334155; }
+    .status-Dangerous { color: #ef4444; font-weight: bold; }
+    .status-Warning { color: #f59e0b; font-weight: bold; }
+    .status-Safe { color: #10b981; font-weight: bold; }
+    .alert-banner { background: #7f1d1d; border: 1px solid #ef4444; padding: 10px; border-radius: 6px; margin-bottom: 10px; text-align: center; }
+    .cmd-btn { width: 100%; padding: 10px; background: #dc2626; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 12px; }
+    .cmd-btn:hover { background: #b91c1c; }
+    button.save { width: 100%; padding: 8px; background: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2 style="margin-top:0;">🛡️ Kavacham V2 Shield</h2>
+  
+  <div id="auth-section">
+    <p style="font-size:12px;">Enter your Kavacham JWT Token:</p>
+    <input type="text" id="token-input" placeholder="Paste Token from Web App" style="width:90%; padding:6px; margin-bottom:8px;" />
+    <button id="save-token" class="save">Save Token</button>
+  </div>
+
+  <div id="scan-section" style="display:none;">
+    <div id="danger-banner" class="alert-banner" style="display:none;">
+      ⚠️ <strong>RED ALERT DETECTED!</strong>
+    </div>
+
+    <div class="card">
+      <p style="font-size:12px; margin:0;">Active Page Scan:</p>
+      <p id="target-url" style="font-size:11px; word-break:break-all; color:#94a3b8;"></p>
+      <p>Status: <span id="status-text"></span></p>
+      <ul id="details-list" style="font-size:11px; padding-left:15px; color:#cbd5e1;"></ul>
+      
+      <button id="open-command-center" class="cmd-btn" style="display:none;">
+        🚀 Open Kavacham Command Center
+      </button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
