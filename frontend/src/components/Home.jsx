@@ -99,14 +99,14 @@ const Home = ({ user, onLogout }) => {
           </div>
 
           <h1 className="hero-title animate-fade-in">
-            Your AI Dual Shield Against <br />
+            Your Dual Shield Against <br />
             <span className="hero-highlight-cyan">Phishing Spoofs</span> &amp;{' '}
             <span className="hero-highlight-magenta">Data Breaches</span>
           </h1>
 
           <p className="hero-subtitle animate-fade-in">
             Protect your organization and identity with real-time IDN Punycode homograph attack detection,
-            zero-knowledge credential leak audits, and automated emergency threat defense.
+            privacy-first credential leak audits, and automated emergency threat defense.
           </p>
 
           {/* Quick Domain Scan Form */}
@@ -131,16 +131,16 @@ const Home = ({ user, onLogout }) => {
           {/* Hero Metrics Bar */}
           <div className="hero-stats-grid">
             <div className="stat-card">
-              <span className="stat-number text-cyan">99.9%</span>
-              <span className="stat-label">Homograph Spoof Precision</span>
+              <span className="stat-title text-cyan">Real-Time Detection</span>
+              <span className="stat-label">Live URL security analysis</span>
             </div>
             <div className="stat-card">
-              <span className="stat-number text-emerald">0 ms</span>
-              <span className="stat-label">ZK Leak Probability</span>
+              <span className="stat-title text-emerald">Privacy-First Audit</span>
+              <span className="stat-label">K-anonymity credential checking</span>
             </div>
             <div className="stat-card">
-              <span className="stat-number text-magenta">100K+</span>
-              <span className="stat-label">Typosquatting Threats Blocked</span>
+              <span className="stat-title text-magenta">Threat Intelligence</span>
+              <span className="stat-label">Domain &amp; phishing analysis</span>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ const Home = ({ user, onLogout }) => {
           </div>
           <h2 className="section-title">Triple-Layer Threat Protection</h2>
           <p className="section-subtitle">
-            Kavacham V2 deploys advanced deep-inspection algorithms and zero-knowledge proofs to neutralize attacks before damage occurs.
+            Kavacham V2 deploys advanced deep-inspection algorithms and privacy-preserving $k$-anonymity checks to neutralize attacks before damage occurs.
           </p>
         </div>
 
@@ -189,14 +189,14 @@ const Home = ({ user, onLogout }) => {
             </Link>
           </div>
 
-          {/* Card 2: Zero-Knowledge Breach Auditor */}
+          {/* Card 2: Privacy-First Password Breach Auditor */}
           <div className="cyber-card feature-card">
             <div className="feature-icon-wrapper icon-violet">
               <Key size={26} />
             </div>
-            <h3 className="feature-title">Zero-Knowledge Breach Auditor</h3>
+            <h3 className="feature-title">Privacy-First Password Breach Auditor</h3>
             <p className="feature-description">
-              Evaluates master passwords against billions of compromised data breach records using mathematical $k$-Anonymity. Computes SHA-1 hash prefixes locally so your actual credentials never leave your client browser.
+              Checks password breach exposure using a privacy-preserving SHA-1 k-anonymity approach. Computes SHA-1 hash prefixes locally so your actual credentials never leave your client browser.
             </p>
             <ul className="feature-bullets">
               <li>
@@ -255,7 +255,7 @@ const Home = ({ user, onLogout }) => {
           <div className="cta-content">
             <h2 className="cta-title">Ready to Fortify Your Cyber Defense?</h2>
             <p className="cta-description">
-              Join thousands of operators utilizing Kavacham V2 for automated typosquatting detection and zero-knowledge security audits.
+              Join operators utilizing Kavacham V2 for automated typosquatting detection and privacy-first security audits.
             </p>
             <div className="cta-button-group">
               <Link to="/dashboard" className="cyber-button primary-btn">
@@ -279,7 +279,7 @@ const Home = ({ user, onLogout }) => {
             <span className="footer-title">KAVACHAM V2</span>
           </div>
           <p className="footer-copy">
-            &copy; {new Date().getFullYear()} Kavacham Cyber Defense Protocol. All rights reserved. Zero-Knowledge ZK-Vault Architecture.
+            &copy; {new Date().getFullYear()} Kavacham Cyber Defense Protocol. All rights reserved. Privacy-First K-Anonymity Architecture.
           </p>
         </div>
       </footer>

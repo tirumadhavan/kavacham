@@ -5,6 +5,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   AlertOctagon,
+  AlertTriangle,
   XSquare,
   Trash2,
   KeyRound,
@@ -24,20 +25,21 @@ const CommandCenter = ({ user }) => {
 
   // State to track completed action steps
   const [stepStatus, setStepStatus] = useState({
-    step1: false, // Close & Block Domain
-    step2: false, // Clear Session Cookies & LocalStorage
-    step3: false, // Run ZK Password Audit & Reset Credentials
+    step1: false, // Domain Isolation (Prototype Simulation)
+    step2: false, // Clear Session Storage
+    step3: false, // Credential Exposure Check (Auditor Navigation)
     step4: false, // Submit Phishing Report to Database
   });
 
   const [loadingStep, setLoadingStep] = useState(null);
   const [reportSuccess, setReportSuccess] = useState('');
+  const [reportError, setReportError] = useState('');
 
   // Calculate progress percentage
   const completedCount = Object.values(stepStatus).filter(Boolean).length;
   const progressPercent = (completedCount / 4) * 100;
 
-  // Step 1: Immediately Close & Block Malicious Domain
+  // Step 1: Simulate Domain Isolation Procedure (Prototype Simulation)
   const handleStep1 = () => {
     setLoadingStep(1);
     setTimeout(() => {
@@ -46,46 +48,43 @@ const CommandCenter = ({ user }) => {
     }, 600);
   };
 
-  // Step 2: Clear Session Cookies & Local Storage
+  // Step 2: Clear Session Storage for current browser origin
   const handleStep2 = () => {
     setLoadingStep(2);
     setTimeout(() => {
-      // Clear session cookies / transient storage items
+      // Clear session storage for the current browser origin
       sessionStorage.clear();
       setStepStatus((prev) => ({ ...prev, step2: true }));
       setLoadingStep(null);
     }, 700);
   };
 
-  // Step 3: Run Zero-Knowledge Password Audit & Reset Credentials
+  // Step 3: Direct to Password Breach Auditor in Security Dashboard
   const handleStep3 = () => {
-    setLoadingStep(3);
-    setTimeout(() => {
-      setStepStatus((prev) => ({ ...prev, step3: true }));
-      setLoadingStep(null);
-    }, 800);
+    setStepStatus((prev) => ({ ...prev, step3: true }));
   };
 
   // Step 4: Submit Phishing Report to Database (POST /scans/telemetry)
   const handleStep4 = async () => {
     setLoadingStep(4);
     setReportSuccess('');
+    setReportError('');
 
     try {
       // Send POST /scans/telemetry request with { targetUrl } via API.post('/scans/telemetry', { targetUrl })
       await API.post('/scans/telemetry', { targetUrl });
       setReportSuccess('Telemetry Report Filed Successfully ✓');
-    } catch (err) {
-      console.warn('Backend telemetry endpoint fallback:', err);
-      // Fallback for demo execution if backend endpoint is mock
-      setReportSuccess('Telemetry Report Filed Successfully ✓');
-    } finally {
       setStepStatus((prev) => ({ ...prev, step4: true }));
+    } catch (err) {
+      console.error('Backend telemetry endpoint error:', err);
+      setReportError('Telemetry Report Failed — Backend Unavailable');
+      setStepStatus((prev) => ({ ...prev, step4: false }));
+    } finally {
       setLoadingStep(null);
     }
   };
 
-  // Execute All Steps in 1-Click
+  // Execute All Steps in 1-Click Protocol
   const handleExecuteAll = async () => {
     handleStep1();
     setTimeout(() => handleStep2(), 400);
@@ -111,7 +110,7 @@ const CommandCenter = ({ user }) => {
             <h1 className="header-title">
               EMERGENCY <span className="v2-tag text-danger">COMMAND CENTER</span>
             </h1>
-            <p className="header-subtitle">Active Phishing Threat Response & Mitigation Protocol</p>
+            <p className="header-subtitle">Active Phishing Threat Incident Response Protocol</p>
           </div>
         </div>
 
@@ -149,7 +148,7 @@ const CommandCenter = ({ user }) => {
               id="execute-all-btn"
             >
               <Zap size={18} />
-              <span>1-CLICK MITIGATE ALL</span>
+              <span>1-CLICK RESPONSE PROTOCOL</span>
             </button>
           </div>
         </section>
@@ -158,8 +157,8 @@ const CommandCenter = ({ user }) => {
         <section className="action-progress-card cyber-card">
           <div className="progress-header">
             <div className="progress-titles">
-              <h3>Mitigation Protocol Status</h3>
-              <p>{completedCount} of 4 Response Steps Executed</p>
+              <h3>Incident Response Checklist</h3>
+              <p>{completedCount}/4 Steps Reviewed</p>
             </div>
             <span className="progress-percentage mono-font">{Math.round(progressPercent)}%</span>
           </div>
@@ -174,22 +173,40 @@ const CommandCenter = ({ user }) => {
 
         {/* --- 1-CLICK ACTION PLAN STEPS --- */}
         <section className="action-plan-grid">
-          {/* STEP 1: Close & Block Malicious Domain */}
+          {/* STEP 1: Domain Isolation */}
           <div className={`cyber-card step-card ${stepStatus.step1 ? 'step-completed' : ''}`}>
             <div className="step-number-badge">01</div>
             <div className="step-content">
               <div className="step-icon-header">
                 <XSquare size={24} className="text-danger" />
-                <h4>Step 1: Immediately Close &amp; Block Domain</h4>
+                <h4>
+                  Step 1: Domain Isolation{' '}
+                  <span
+                    className="prototype-tag"
+                    style={{
+                      fontSize: '0.7rem',
+                      padding: '2px 8px',
+                      borderRadius: '4px',
+                      background: 'rgba(234, 179, 8, 0.15)',
+                      color: '#eab308',
+                      border: '1px solid rgba(234, 179, 8, 0.3)',
+                      verticalAlign: 'middle',
+                      marginLeft: '6px',
+                      fontWeight: 500
+                    }}
+                  >
+                    Prototype Simulation
+                  </span>
+                </h4>
               </div>
               <p className="step-description">
-                Terminates network sockets connected to <code className="mono-font">{targetUrl}</code>, enforces DNS blacklisting, and isolates tab execution.
+                Demonstrates the recommended domain-isolation response. Production deployment would integrate browser-level domain blocking.
               </p>
               <div className="step-action-bar">
                 {stepStatus.step1 ? (
                   <div className="step-done-badge">
                     <CheckCircle2 size={18} />
-                    <span>Domain Quarantined &amp; Blocked</span>
+                    <span>Domain Isolation Procedure Reviewed</span>
                   </div>
                 ) : (
                   <button
@@ -202,12 +219,12 @@ const CommandCenter = ({ user }) => {
                     {loadingStep === 1 ? (
                       <>
                         <Cpu className="spin-icon" size={16} />
-                        <span>Quarantining...</span>
+                        <span>Simulating Isolation...</span>
                       </>
                     ) : (
                       <>
                         <XSquare size={16} />
-                        <span>Block &amp; Quarantined Domain</span>
+                        <span>Simulate Domain Isolation</span>
                       </>
                     )}
                   </button>
@@ -216,16 +233,16 @@ const CommandCenter = ({ user }) => {
             </div>
           </div>
 
-          {/* STEP 2: Clear Session Cookies & Local Storage */}
+          {/* STEP 2: Clear Session Storage */}
           <div className={`cyber-card step-card ${stepStatus.step2 ? 'step-completed' : ''}`}>
             <div className="step-number-badge">02</div>
             <div className="step-content">
               <div className="step-icon-header">
                 <Trash2 size={24} className="text-amber" />
-                <h4>Step 2: Clear Session Cookies &amp; Storage</h4>
+                <h4>Step 2: Clear Session Storage</h4>
               </div>
               <p className="step-description">
-                Purges transient session cookies, Auth headers, and browser LocalStorage to prevent session token theft or cross-site forgery.
+                Clears session storage for the current browser origin.
               </p>
               <div className="step-action-bar">
                 {stepStatus.step2 ? (
@@ -244,7 +261,7 @@ const CommandCenter = ({ user }) => {
                     {loadingStep === 2 ? (
                       <>
                         <Cpu className="spin-icon" size={16} />
-                        <span>Purging Storage...</span>
+                        <span>Clearing Storage...</span>
                       </>
                     ) : (
                       <>
@@ -258,43 +275,42 @@ const CommandCenter = ({ user }) => {
             </div>
           </div>
 
-          {/* STEP 3: Run ZK Password Audit & Reset Credentials */}
+          {/* STEP 3: Credential Exposure Check */}
           <div className={`cyber-card step-card ${stepStatus.step3 ? 'step-completed' : ''}`}>
             <div className="step-number-badge">03</div>
             <div className="step-content">
               <div className="step-icon-header">
                 <KeyRound size={24} className="text-violet" />
-                <h4>Step 3: Run ZK Password Audit &amp; Reset</h4>
+                <h4>Step 3: Credential Exposure Check</h4>
               </div>
               <p className="step-description">
-                Executes zero-knowledge $k$-Anonymity SHA-1 prefix analysis to verify if entered credentials exist in dark web breach dumps.
+                Use the Password Breach Auditor to check credential exposure using the privacy-preserving k-anonymity workflow.
               </p>
               <div className="step-action-bar">
                 {stepStatus.step3 ? (
-                  <div className="step-done-badge">
-                    <CheckCircle2 size={18} />
-                    <span>ZK Credential Audit Completed</span>
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <div className="step-done-badge">
+                      <CheckCircle2 size={18} />
+                      <span>Auditor Step Reviewed</span>
+                    </div>
+                    <Link
+                      to="/dashboard#password-auditor-section"
+                      className="cyber-button secondary-btn step-btn"
+                    >
+                      <KeyRound size={16} />
+                      <span>Open Password Breach Auditor</span>
+                    </Link>
                   </div>
                 ) : (
-                  <button
-                    type="button"
+                  <Link
+                    to="/dashboard#password-auditor-section"
                     className="cyber-button primary-btn step-btn"
                     onClick={handleStep3}
-                    disabled={loadingStep === 3}
                     id="step-3-btn"
                   >
-                    {loadingStep === 3 ? (
-                      <>
-                        <Cpu className="spin-icon" size={16} />
-                        <span>Auditing Hash Prefixes...</span>
-                      </>
-                    ) : (
-                      <>
-                        <KeyRound size={16} />
-                        <span>Run ZK Password Audit</span>
-                      </>
-                    )}
-                  </button>
+                    <KeyRound size={16} />
+                    <span>Open Password Breach Auditor</span>
+                  </Link>
                 )}
               </div>
             </div>
@@ -309,7 +325,7 @@ const CommandCenter = ({ user }) => {
                 <h4>Step 4: Submit Phishing Report to DB</h4>
               </div>
               <p className="step-description">
-                Logs threat telemetry, IP headers, and homograph indicators into the central Kavacham Threat Intelligence Ledger via POST /scans/telemetry.
+                Logs threat telemetry and URL details to the Kavacham threat intelligence database via POST /scans/telemetry.
               </p>
               <div className="step-action-bar">
                 {stepStatus.step4 ? (
@@ -350,14 +366,23 @@ const CommandCenter = ({ user }) => {
           </div>
         )}
 
+        {reportError && (
+          <div className="shield-alert error-alert margin-top-16">
+            <AlertTriangle size={18} />
+            <span>{reportError}</span>
+          </div>
+        )}
+
         {/* --- AUDIT SUMMARY CARD --- */}
         {completedCount === 4 && (
           <section className="cyber-card emergency-summary-card animate-fade-in">
             <div className="summary-header">
               <ShieldCheck size={32} className="text-emerald" />
               <div>
-                <h3>EMERGENCY MITIGATION COMPLETE</h3>
-                <p>All 4 defensive measures have been executed. Threat payload neutralized.</p>
+                <h3>INCIDENT RESPONSE WORKFLOW REVIEWED</h3>
+                <p>
+                  All available response steps have been reviewed. Domain isolation remains a prototype simulation; the phishing report is logged to the Kavacham threat database.
+                </p>
               </div>
             </div>
             <div className="summary-actions">

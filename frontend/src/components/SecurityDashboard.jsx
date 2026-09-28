@@ -223,7 +223,7 @@ const SecurityDashboard = ({ user, onLogout }) => {
         <div className="header-actions">
           <div className="system-status-indicator">
             <Zap size={14} className="status-icon" />
-            <span>Z-K ENGINE ACTIVE</span>
+            <span>PRIVACY ENGINE ACTIVE</span>
           </div>
 
           <div className="user-profile-pill">
@@ -408,7 +408,7 @@ const SecurityDashboard = ({ user, onLogout }) => {
           </section>
 
           {/* ============================================================== */}
-          {/* SHIELD 2: Zero-Knowledge Password Auditor */}
+          {/* SHIELD 2: Privacy-First Password Breach Auditor */}
           {/* ============================================================== */}
           <section className="cyber-card shield-card" id="password-auditor-section">
             <div className="card-header">
@@ -416,7 +416,7 @@ const SecurityDashboard = ({ user, onLogout }) => {
                 <Lock size={22} />
               </div>
               <div className="card-header-titles">
-                <h2>Shield 2: Zero-Knowledge Password Auditor</h2>
+                <h2>Shield 2: Privacy-First Password Breach Auditor</h2>
                 <p>Verify data breach exposure using $k$-Anonymity SHA-1 hash prefixes</p>
               </div>
             </div>
@@ -528,7 +528,7 @@ const SecurityDashboard = ({ user, onLogout }) => {
                   <div className="zk-info-box">
                     <div className="info-box-header">
                       <Sparkles size={16} className="text-violet" />
-                      <span>$k$-Anonymity ZK Proof</span>
+                      <span>$k$-Anonymity Breach Check</span>
                     </div>
                     <div className="info-box-body">
                       <div className="metric-row">
@@ -684,7 +684,7 @@ const SecurityDashboard = ({ user, onLogout }) => {
 
                       {/* Threat Details with Full Text Wrapping & Expansion on Hover */}
                       <div className="history-details-snippet wrap-text expand-on-hover">
-                        {scanItem.details || scanItem.detectedRisks?.[0] || scanItem.assessment || (isUrlScan ? 'Domain evaluated' : 'Z-K hash audit')}
+                        {scanItem.details || scanItem.detectedRisks?.[0] || scanItem.assessment || (isUrlScan ? 'Domain evaluated' : 'Privacy hash audit')}
                       </div>
                     </div>
                   </div>

@@ -100,7 +100,7 @@ const Auth = ({ onLoginSuccess }) => {
             KAVACHAM <span className="brand-v2">V2</span>
           </h1>
           <p className="brand-subtitle">
-            Next-Gen Typosquatting Defense & Zero-Knowledge Credential Vault
+            Next-Gen Typosquatting Defense &amp; Privacy-First Credential Vault
           </p>
         </div>
 
@@ -231,7 +231,7 @@ const Auth = ({ onLoginSuccess }) => {
           <div className="auth-card-footer">
             <div className="sec-badge">
               <span className="status-dot"></span>
-              <span>256-bit ZK-Encryption Standard Active</span>
+              <span>K-Anonymity Privacy Standard Active</span>
             </div>
           </div>
         </div>

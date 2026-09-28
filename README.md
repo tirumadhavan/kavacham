@@ -55,14 +55,6 @@ kavacham/
 ├── frontend/      # React + Vite web dashboard
 └── extension/     # Chrome Manifest V3 security extension
 
-Yes, that's fine. 👍 **But you have stopped halfway through the README.**
-
-Right now your file ends at:
-
-```text
-└── extension/     # Chrome Manifest V3 security extension
-
-
 ## ⚙️ Getting Started
 
 ### Prerequisites

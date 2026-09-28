@@ -1378,9 +1378,17 @@ html, body {
   font-family: var(--font-mono);
 }
 
+.stat-title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-align: center;
+}
+
 .stat-label {
   font-size: 13px;
   color: var(--text-muted);
+  text-align: center;
 }
 
 /* Features Section */
